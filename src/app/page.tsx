@@ -164,7 +164,7 @@ const HistoryBlock = ({ entry, isLatest, onBlockComplete }: any) => {
                 
                 {(step >= 2 || skip) && <TerminalText as="p" className="text-lg text-sky-400 mb-4 font-semibold" text={portfolioData.profile.title} isActive={step === 2} onComplete={advance} speed={8} skipAnimation={skip} />}
                 
-                {(step >= 3 || skip) && <TerminalText as="p" className="text-slate-400 max-w-3xl leading-relaxed mb-8" text={portfolioData.profile.bio} isActive={step === 3} onComplete={advance} speed={3} skipAnimation={skip} />}
+                {(step >= 3 || skip) && <TerminalText as="p" className="text-slate-400 max-w-3xl leading-relaxed mb-8 whitespace-pre-wrap" text={portfolioData.profile.bio} isActive={step === 3} onComplete={advance} speed={3} skipAnimation={skip} />}
                 
                 {(step >= 4 || skip) && (
                   <motion.div initial={skip ? { opacity: 1 } : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex flex-wrap gap-4 select-none mt-4">
@@ -180,32 +180,12 @@ const HistoryBlock = ({ entry, isLatest, onBlockComplete }: any) => {
 
               {(step >= 1 || skip) && (
                 <motion.div initial={skip ? { opacity: 1 } : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="w-full md:w-auto flex flex-col items-center select-none pt-2 shrink-0">
-                  <div className="w-32 h-40 rounded-md border border-slate-700 bg-[#111625] flex flex-col items-center justify-center text-center p-1 shadow-[0_0_15px_-3px_rgba(56,189,248,0.2)] relative overflow-hidden group">
-                    {portfolioData.profile.avatarUrl && portfolioData.profile.avatarUrl !== "" ? (
-                      <>
-                        <img 
-                          src={portfolioData.profile.avatarUrl} 
-                          alt="Vinishraghav K E - Profile Headshot"
-                          className="w-full h-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-500 relative z-0"
-                          onError={(e) => {
-                            // @ts-ignore
-                            e.currentTarget.style.display = 'none';
-                            // @ts-ignore
-                            e.currentTarget.nextSibling.style.display = 'none';
-                            // @ts-ignore
-                            e.currentTarget.parentElement.querySelector('.fallback-avatar').classList.remove('hidden');
-                            // @ts-ignore
-                            e.currentTarget.parentElement.querySelector('.fallback-avatar').classList.add('flex');
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-sky-500/10 mix-blend-color z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-500"></div>
-                      </>
-                    ) : null}
-
-                    <div className={`fallback-avatar absolute inset-0 flex-col items-center justify-center p-2 z-20 ${portfolioData.profile.avatarUrl && portfolioData.profile.avatarUrl !== "" ? 'hidden' : 'flex'}`}>
-                      <span className="text-xs text-slate-500 font-mono">[ AVATAR ]</span>
-                      <span className="text-[9px] text-sky-400/50 font-mono mt-1">vinish.jpg</span>
-                    </div>
+                  <div className="w-32 h-40 rounded-md border border-slate-700 bg-slate-900 shadow-lg relative group overflow-hidden">
+                    <img 
+                      src={portfolioData.profile.avatarUrl} 
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </motion.div>
               )}
@@ -259,7 +239,7 @@ const HistoryBlock = ({ entry, isLatest, onBlockComplete }: any) => {
                       {(step >= descStep || skip) && (
                         <TerminalText as="p" className="text-slate-400 text-sm mt-2" text={project.desc} speed={2} isActive={step === descStep} onComplete={advance} skipAnimation={skip}
                           suffix={
-                             <motion.a initial={skip ? {opacity:1} : {opacity:0}} animate={{opacity:1}} href={project.github} className="text-xs text-yellow-400 underline mt-2 block hover:text-yellow-300 transition-colors">
+                             <motion.a initial={skip ? {opacity:1} : {opacity:0}} animate={{opacity:1}} href={project.github} target="_blank" rel="noreferrer" className="text-xs text-yellow-400 underline mt-2 block hover:text-yellow-300 transition-colors">
                                [view repository]
                              </motion.a>
                           }
@@ -291,12 +271,12 @@ const HistoryBlock = ({ entry, isLatest, onBlockComplete }: any) => {
               {portfolioData.resumes.map((resume, idx) => (
                 <React.Fragment key={idx}>
                   {(step >= idx + 1 || skip) && (
-                    <div className="group flex items-center gap-2">
+                     <div className="group flex items-center gap-2">
                        <span>-rwxr-xr-x 1 vinish staff</span>
                        <TerminalText text={resume.name} isActive={step === idx + 1} onComplete={advance} speed={8} skipAnimation={skip}
                           className="text-yellow-400 font-bold"
                           suffix={
-                            <motion.a initial={skip ? {opacity:1} : {opacity:0}} animate={{opacity:1}} href={resume.url} className="text-xs text-sky-400 underline ml-3 hover:text-sky-300">
+                            <motion.a initial={skip ? {opacity:1} : {opacity:0}} animate={{opacity:1}} href={resume.url} target="_blank" rel="noreferrer" className="text-xs text-sky-400 underline ml-3 hover:text-sky-300">
                               [download]
                             </motion.a>
                           }
@@ -310,31 +290,38 @@ const HistoryBlock = ({ entry, isLatest, onBlockComplete }: any) => {
 
           {entry.tabId === 'contact' && (
             <div className="pl-4 text-sm text-slate-300 space-y-3">
-              {(step >= 1 || skip) && <TerminalText as="p" text="Connecting via SSH protocol..." isActive={step === 1} onComplete={advance} speed={15} className="text-slate-400 mb-4 block" skipAnimation={skip} />}
-              
+              {(step >= 1 || skip) && (
+                <div className="flex items-center gap-2">
+                   <span className="text-green-400 font-mono w-28">[✔] Email    :</span>
+                   <a href={`mailto:${portfolioData.contact.email}`} className="text-sky-400 hover:underline">
+                     <TerminalText text={portfolioData.contact.email} isActive={step === 1} onComplete={advance} speed={10} skipAnimation={skip} />
+                   </a>
+                </div>
+              )}
+
               {(step >= 2 || skip) && (
                 <div className="flex items-center gap-2">
-                   <span className="text-green-400 font-mono">[✔] Email    :</span>
-                   <a href="mailto:contact@example.com" className="text-sky-400 hover:underline">
-                     <TerminalText text="contact@example.com" isActive={step === 2} onComplete={advance} speed={10} skipAnimation={skip} />
+                   <span className="text-green-400 font-mono w-28">[✔] WhatsApp :</span>
+                   <a href={`https://wa.me/${portfolioData.contact.mobile.replace(/\D/g,'')}`} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
+                     <TerminalText text={portfolioData.contact.mobile} isActive={step === 2} onComplete={advance} speed={10} skipAnimation={skip} />
                    </a>
                 </div>
               )}
 
               {(step >= 3 || skip) && (
                 <div className="flex items-center gap-2">
-                   <span className="text-green-400 font-mono">[✔] GitHub   :</span>
-                   <a href="https://github.com/username" target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
-                     <TerminalText text="github.com/username" isActive={step === 3} onComplete={advance} speed={10} skipAnimation={skip} />
+                   <span className="text-green-400 font-mono w-28">[✔] GitHub   :</span>
+                   <a href={portfolioData.contact.github} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
+                     <TerminalText text={`[github.com/Vinishraghav](${portfolioData.contact.github})`} isActive={step === 3} onComplete={advance} speed={10} skipAnimation={skip} />
                    </a>
                 </div>
               )}
 
               {(step >= 4 || skip) && (
                 <div className="flex items-center gap-2">
-                   <span className="text-green-400 font-mono">[✔] LinkedIn :</span>
-                   <a href="https://linkedin.com/in/username" target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
-                     <TerminalText text="linkedin.com/in/username" isActive={step === 4} onComplete={advance} speed={10} skipAnimation={skip} />
+                   <span className="text-green-400 font-mono w-28">[✔] LinkedIn :</span>
+                   <a href={portfolioData.contact.linkedin} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
+                     <TerminalText text={`[linkedin.com/in/vinishraghav-k-e-aba63b313](${portfolioData.contact.linkedin})`} isActive={step === 4} onComplete={advance} speed={10} skipAnimation={skip} />
                    </a>
                 </div>
               )}
@@ -445,10 +432,10 @@ export default function TerminalPortfolio() {
           50% { background-color: #38bdf8 } 
         }
       `}} />
-      <div className="min-h-screen w-full bg-[#070a13] relative overflow-hidden flex items-center justify-center p-4">
+      <div className="min-h-screen w-full bg-[#070a13] relative overflow-hidden flex items-center justify-center p-4 font-mono">
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20 animate-pulse pointer-events-none"></div>
 
-        <div className="w-full max-w-5xl bg-[#0b0f19] border border-slate-800 rounded-lg shadow-[0_0_60px_-15px_rgba(14,165,233,0.3)] flex flex-col overflow-hidden relative z-10 min-h-[85vh] backdrop-blur-xl">
+        <div className="w-full max-w-5xl bg-[#0b0f19] border border-slate-800 rounded-lg shadow-2xl flex flex-col overflow-hidden relative z-10 min-h-[85vh] backdrop-blur-xl">
           
           <div className="bg-[#111625] px-4 py-3 flex items-center justify-between border-b border-slate-800 select-none shrink-0">
             <div className="flex items-center gap-2">
@@ -484,7 +471,6 @@ export default function TerminalPortfolio() {
             ))}
           </div>
 
-          {/* Core Interactive Shell Body */}
           <div 
             ref={scrollRef}
             className="flex-1 p-6 font-mono text-left max-h-[70vh] terminal-scrollbar overflow-y-auto"
@@ -507,7 +493,6 @@ export default function TerminalPortfolio() {
               );
             })}
 
-            {/* Always visible bottom prompt when not typing output */}
             {!isTyping && (
               <InteractivePrompt onCommand={handleCommand} disabled={isTyping} />
             )}
