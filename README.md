@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Vinishraghav Portfolio
 
-## Getting Started
+A modern terminal-inspired developer portfolio built using **Next.js, TypeScript, Tailwind CSS, and Framer Motion**.
 
-First, run the development server:
+Designed to showcase my projects, technical skills, certifications, and career journey as a **Software Engineer, Full Stack Developer, and aspiring Cloud Engineer**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Terminal-inspired user interface
+- Interactive command-line experience
+- Responsive design for desktop and mobile
+- Smooth animations with Framer Motion
+- Project showcase section
+- Certifications and achievements section
+- Multiple resume downloads
+- Recruiter-friendly navigation
+- Modern dark theme UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
 
-## Learn More
+- Next.js 15
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
 
-To learn more about Next.js, take a look at the following resources:
+### Tools & Platforms
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Git
+- GitHub
+- Vercel
+- AWS (Learning)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Featured Projects
 
-## Deploy on Vercel
+### Real-Time Transport Tracking and Smart Bus Monitoring System
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Flutter
+- Firebase
+- Google Maps API
+- Real-time GPS tracking
+- Cloud synchronization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tour Van Booking Website
+
+- Flask
+- HTML
+- CSS
+- JavaScript
+- REST APIs
+- Authentication & Session Management
+
+### Credit Card Risk Management System
+
+- Python
+- Flask
+- Machine Learning
+- Risk Analysis
+- Data Processing
+
+## 🏆 Certifications
+
+- AWS Certified Cloud Practitioner
+- Salesforce Certified Agentforce Specialist
+- Oracle Java Foundations
+- SQL and Relational Databases 101
+- Mastering Data Structures & Algorithms using C and C++
+- Introduction to Linux (LFS101)
+
+## 📈 Achievements
+
+- Solved 1000+ coding problems on SkillRack
+- LeetCode Rating: 1348
+- Codeforces Rating: 654
+- Participant – Prometeo'25 (IIT Jodhpur)
+
+## 🎯 Career Interests
+
+- Software Engineering
+- Full Stack Development
+- Cloud Engineering
+- DevOps & Site Reliability Engineering (SRE)
+
+## 📬 Connect With Me
+
+- LinkedIn: [https://www.linkedin.com/in/vinishraghav-k-e-aba63b313/]
+- GitHub: [https://github.com/Vinishraghav](https://github.com/Vinishraghav)
+- Portfolio: [Add Portfolio URL]
+
+---
+⭐ If you like this portfolio, feel free to star the repository.
